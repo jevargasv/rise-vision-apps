@@ -109,7 +109,7 @@ angular.module('risevision.template-editor.controllers')
           } else {
             _lastSavedTimestamp = _getCurrentTimestamp();
 
-            $scope.factory.save();
+            $scope.factory.updatePresentation();
           }
         }, MINIMUM_INTERVAL_BETWEEN_SAVES);
       }
@@ -198,7 +198,7 @@ angular.module('risevision.template-editor.controllers')
 
           _clearSaveTimeout();
 
-          var savePromise = $scope.hasUnsavedChanges ? $scope.factory.save() : $q.resolve();
+          var savePromise = $scope.hasUnsavedChanges ? $scope.factory.updatePresentation() : $q.resolve();
           var hasSchedules = scheduleFactory.hasSchedules();
 
           savePromise

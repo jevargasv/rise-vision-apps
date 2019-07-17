@@ -38,6 +38,9 @@ describe('controller: TemplateEditor', function() {
       save: function() {
         return Q.resolve();
       },
+      updatePresentation: function() {
+        return Q.resolve();
+      },
       publishPresentation: function () {
         return Q.resolve();
       }
@@ -268,14 +271,14 @@ describe('controller: TemplateEditor', function() {
       factory.presentation.name = 'New Name';
       $scope.$apply();
       $timeout.flush();
-      var saveStub = sinon.stub(factory, 'save', function(){
+      var updateStub = sinon.stub(factory, 'updatePresentation', function(){
         return Q.resolve();
       });
 
       $rootScope.$broadcast('$stateChangeStart', { name: 'newState' });
       $scope.$apply();
 
-      saveStub.should.have.been.called;
+      updateStub.should.have.been.called;
     });
 
     it('should not notify unsaved changes when changing URL if there are no changes and user has schedules', function () {
