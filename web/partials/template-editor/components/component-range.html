@@ -2,9 +2,8 @@
   <div class="attribute-editor-row attribute-row-first attribute-row-last">
     <input id="range-component-input"
       type="range"
-      class="form-control"
-      min="{ min }"
-      max="{ max }"
+      min="{{ min }}"
+      max="{{ max }}"
       ng-model="value"
       ng-change="save()"
     >
