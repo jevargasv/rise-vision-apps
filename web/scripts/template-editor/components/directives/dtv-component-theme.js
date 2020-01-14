@@ -13,7 +13,7 @@ angular.module('risevision.template-editor.directives')
           $scope.registerDirective({
             type: 'rise-data-theme',
             iconType: 'streamline',
-            icon: 'palette',
+            icon: 'theme',
             element: element,
             show: function () {
               element.show();
