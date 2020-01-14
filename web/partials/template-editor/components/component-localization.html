@@ -1,10 +1,13 @@
 <div class="attribute-editor-component">
   <div class="attribute-editor-row attribute-row-first attribute-row-last">
-    <input id="localization-component-input"
-      type="text"
+    <select id="localization-component-input"
       class="form-control"
       ng-model="value"
       ng-change="save()"
     >
+      <option value="english">English</option>
+      <option value="spanish">Spanish</option>
+      <option value="french">French</option>
+    </select>
   </div>
 </div>

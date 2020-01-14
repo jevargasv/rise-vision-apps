@@ -11,6 +11,8 @@ angular.module('risevision.template-editor.directives')
           $scope.factory = templateEditorFactory;
 
           function _load() {
+            $scope.min = $scope.getAvailableAttributeData($scope.componentId, 'min');
+            $scope.max = $scope.getAvailableAttributeData($scope.componentId, 'max');
             $scope.value = $scope.getAvailableAttributeData($scope.componentId, 'value');
           }
 
