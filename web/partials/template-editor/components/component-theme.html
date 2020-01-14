@@ -1,3 +1,11 @@
-<div>
-  Theme settings
+<div class="attribute-editor-component" >
+  <div class="attribute-editor-row">
+    <div class="form-group">
+      <label class="control-label" for="te-theme-options">Themes:</label>
+      <select id="te-theme-options" ng-model="theme" class="form-control" ng-change="saveTheme()">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </div>
 </div>
