@@ -31,7 +31,7 @@ angular.module('risevision.template-editor.directives')
           });
 
           $scope.load = function () {
-            $scope.theme = $scope.getAvailableAttributeData($scope.componentId, 'theme');
+            $scope.theme = $scope.getAvailableAttributeData($scope.componentId, 'theme') || "light";
             $scope.override = $scope.getAvailableAttributeData($scope.componentId, 'override');
           };
 
