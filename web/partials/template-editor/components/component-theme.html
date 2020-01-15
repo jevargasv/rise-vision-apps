@@ -1,4 +1,12 @@
-<div class="attribute-editor-component" >
+<div class="attribute-editor-component theme-container" >
+  <div class="attribute-editor-row">
+    <span class="theme-checkbox">
+      <input id="overrideBranding" type="checkbox"
+             ng-change="saveOverride()"
+             ng-model="override">
+      <label for="overrideBranding">Override Branding</label>
+    </span>
+  </div>
   <div class="attribute-editor-row">
     <div class="form-group">
       <label class="control-label" for="te-theme-options">Themes:</label>

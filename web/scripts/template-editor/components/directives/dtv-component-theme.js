@@ -14,6 +14,10 @@ angular.module('risevision.template-editor.directives')
             $scope.setAttributeData($scope.componentId, 'theme', $scope.theme);
           };
 
+          $scope.saveOverride = function () {
+            $scope.setAttributeData($scope.componentId, 'override', $scope.override);
+          };
+
           $scope.registerDirective({
             type: 'rise-data-theme',
             iconType: 'streamline',
@@ -28,6 +32,7 @@ angular.module('risevision.template-editor.directives')
 
           $scope.load = function () {
             $scope.theme = $scope.getAvailableAttributeData($scope.componentId, 'theme');
+            $scope.override = $scope.getAvailableAttributeData($scope.componentId, 'override');
           };
 
         }

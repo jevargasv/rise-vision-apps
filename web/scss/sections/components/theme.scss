@@ -1,0 +1,22 @@
+.theme-container {
+  .theme-checkbox {
+    position: absolute;
+    margin-top: 0.2em;
+
+    input[type=checkbox] + label:before {
+      font-family: FontAwesome;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      content: '\f096';
+      cursor: pointer;
+      font-size: 40px;
+      color: #999999;
+    }
+
+    input[type=checkbox]:checked + label:before {
+      color: #FFF;
+      content: '\f14a';
+    }
+  }
+}
