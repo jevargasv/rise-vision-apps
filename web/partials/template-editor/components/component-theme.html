@@ -10,9 +10,10 @@
   <div class="attribute-editor-row">
     <div class="form-group">
       <label class="control-label" for="te-theme-options">Themes:</label>
-      <select id="te-theme-options" ng-model="theme" class="form-control" ng-change="save()">
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
+      <select id="te-theme-options" ng-model="theme"
+              ng-options="th for th in themes"
+              class="form-control"
+              ng-change="save()">
       </select>
     </div>
   </div>
