@@ -12,6 +12,7 @@ angular.module('risevision.template-editor.directives')
 
           function _load() {
             $scope.value = $scope.getAvailableAttributeData($scope.componentId, 'value');
+            $scope.label = $scope.getAvailableAttributeData($scope.componentId, 'label');
           }
 
           $scope.save = function () {
