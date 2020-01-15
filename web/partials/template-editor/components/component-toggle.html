@@ -1,15 +1,18 @@
 <div class="attribute-editor-component">
   <div class="attribute-editor-row attribute-row-first attribute-row-last">
-    <input id="toggle-component-input"
-      type="checkbox"
-      class="form-control"
-      ng-model="value"
-      ng-true-value="'true'"
-      ng-false-value="'false'"
-      ng-change="save()"
-    >
+    <div class="col-xs-12 pl-0 pr-0">
+      <span style="position: absolute; width: 20px;">
+        <input id="toggle-component-input"
+          type="checkbox"
+          ng-model="value"
+          ng-true-value="'true'"
+          ng-false-value="'false'"
+          ng-change="save()"
+        >
+      </span>
+      <span class="instrument-selector-name">
+        <div class="instrument-name">{{ label }}</div>
+      </span>
+    </div>
   </div>
-  <span>
-    {{ label }}
-  </span>
 </div>

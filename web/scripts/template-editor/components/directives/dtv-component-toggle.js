@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('risevision.template-editor.directives')
-  .directive('templateComponentToggle', ['templateEditorFactory',
-    function (templateEditorFactory) {
+  .directive('templateComponentToggle', ['templateEditorFactory', 'blueprintFactory',
+    function (templateEditorFactory, blueprintFactory) {
       return {
         restrict: 'E',
         scope: true,
@@ -12,7 +12,9 @@ angular.module('risevision.template-editor.directives')
 
           function _load() {
             $scope.value = $scope.getAvailableAttributeData($scope.componentId, 'value');
-            $scope.label = $scope.getAvailableAttributeData($scope.componentId, 'label');
+
+            var component = blueprintFactory.getComponent($scope.componentId);
+            $scope.label = component ? component.label : '??????';
           }
 
           $scope.save = function () {
