@@ -1,7 +1,6 @@
 .theme-container {
   .theme-checkbox {
-    position: absolute;
-    margin-top: 0.2em;
+    input[type=checkbox] { display:none; }
 
     input[type=checkbox] + label:before {
       font-family: FontAwesome;
@@ -10,12 +9,12 @@
       text-align: center;
       content: '\f096';
       cursor: pointer;
-      font-size: 40px;
+      font-size: 20px;
       color: #999999;
     }
 
     input[type=checkbox]:checked + label:before {
-      color: #FFF;
+      color: #107dda;
       content: '\f14a';
     }
   }
