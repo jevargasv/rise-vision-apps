@@ -10,11 +10,8 @@ angular.module('risevision.template-editor.directives')
         link: function ($scope, element) {
           $scope.factory = templateEditorFactory;
 
-          $scope.saveTheme = function () {
+          $scope.save = function () {
             $scope.setAttributeData($scope.componentId, 'theme', $scope.theme);
-          };
-
-          $scope.saveOverride = function () {
             $scope.setAttributeData($scope.componentId, 'override', $scope.override);
           };
 
