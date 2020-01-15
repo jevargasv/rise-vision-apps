@@ -12,6 +12,9 @@ angular.module('risevision.template-editor.directives')
 
           function _load() {
             $scope.value = $scope.getAvailableAttributeData($scope.componentId, 'value');
+
+            var languages = $scope.getAvailableAttributeData($scope.componentId, 'languages') || '?';
+            $scope.languages = languages.split(',');
           }
 
           $scope.save = function () {

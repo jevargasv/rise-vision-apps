@@ -30,7 +30,7 @@ angular.module('risevision.template-editor.services')
         return _.find(components, {
           id: componentId
         });
-      }
+      };
 
       factory.getBlueprintData = function (componentId, attributeKey) {
         var component = factory.getComponent(componentId);

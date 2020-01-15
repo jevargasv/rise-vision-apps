@@ -5,9 +5,9 @@
       ng-model="value"
       ng-change="save()"
     >
-      <option value="english">English</option>
-      <option value="spanish">Spanish</option>
-      <option value="french">French</option>
+      <option ng-repeat="option in languages" value="{{ option }}">
+        {{ option }}
+      </option>
     </select>
   </div>
 </div>
