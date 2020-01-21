@@ -14,15 +14,15 @@ angular.module('risevision.template-editor.directives')
             $scope.min = $scope.getAvailableAttributeData($scope.componentId, 'min');
             $scope.max = $scope.getAvailableAttributeData($scope.componentId, 'max');
 
-            var value = $scope.getAvailableAttributeData($scope.componentId, 'value');
-            $scope.value = value;
+            var value = $scope.getAvailableAttributeData($scope.componentId, 'value') || $scope.min;
+            $scope.value = parseInt(value);
 
             var format = $scope.getAvailableAttributeData($scope.componentId, 'format') || '';
             $scope.format = !format ? '#' : format.indexOf('#') < 0 ? '#' + format : format;
           }
 
           $scope.save = function () {
-            $scope.setAttributeData($scope.componentId, 'value', $scope.value);
+            $scope.setAttributeData($scope.componentId, 'value', '' + $scope.value);
           };
 
           $scope.registerDirective({

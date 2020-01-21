@@ -1,6 +1,6 @@
 'use strict';
 
-describe('directive: templateComponentToggle', function() {
+describe('directive: templateComponentRange', function() {
   var $scope,
       element,
       factory;
@@ -18,24 +18,16 @@ describe('directive: templateComponentToggle', function() {
     $provide.service('templateEditorFactory', function() {
       return factory;
     });
-
-    $provide.service('blueprintFactory', function() {
-      return {
-        getComponent: function() {
-          return {};
-        }
-      };
-    });
   }));
 
   beforeEach(inject(function($compile, $rootScope, $templateCache){
-    $templateCache.put('partials/template-editor/components/component-toggle.html', '<p>mock</p>');
+    $templateCache.put('partials/template-editor/components/component-range.html', '<p>mock</p>');
     $scope = $rootScope.$new();
 
     $scope.registerDirective = sinon.stub();
     $scope.setAttributeData = sinon.stub();
 
-    element = $compile("<template-component-toggle></template-component-toggle>")($scope);
+    element = $compile("<template-component-range></template-component-range>")($scope);
     $scope = element.scope();
     $scope.$digest();
   }));
@@ -48,42 +40,81 @@ describe('directive: templateComponentToggle', function() {
 
     var directive = $scope.registerDirective.getCall(0).args[0];
     expect(directive).to.be.ok;
-    expect(directive.type).to.equal('rise-data-toggle');
+    expect(directive.type).to.equal('rise-data-range');
     expect(directive.iconType).to.equal('streamline');
     expect(directive.icon).to.exist;
     expect(directive.show).to.be.a('function');
   });
 
-  it('should load toggle from attribute data', function() {
+  it('should load range from attribute data', function() {
     var directive = $scope.registerDirective.getCall(0).args[0];
-    var sampleValue = "true";
 
-    $scope.getAvailableAttributeData = function() {
+    $scope.getAvailableAttributeData = function(componentId, key) {
+      switch(key) {
+        case 'value': return '50';
+        case 'format': return '';
+      }
       return sampleValue;
     }
 
     directive.show();
 
     expect($scope.componentId).to.equal("TEST-ID");
-    expect($scope.value).to.equal(sampleValue);
+    expect($scope.value).to.equal(50);
+    expect($scope.format).to.equal('#');
   });
 
-  it('should save value to attribute data', function() {
+  it('should detect simple suffix format', function() {
     var directive = $scope.registerDirective.getCall(0).args[0];
-    var sampleValue = "true";
 
-    $scope.getAvailableAttributeData = function() {
+    $scope.getAvailableAttributeData = function(componentId, key) {
+      switch(key) {
+        case 'value': return '50';
+        case 'format': return '%';
+      }
       return sampleValue;
     }
 
     directive.show();
 
-    $scope.value = "false";
+    expect($scope.componentId).to.equal("TEST-ID");
+    expect($scope.value).to.equal(50);
+    expect($scope.format).to.equal('#%');
+  });
+
+  it('should detect full format', function() {
+    var directive = $scope.registerDirective.getCall(0).args[0];
+
+    $scope.getAvailableAttributeData = function(componentId, key) {
+      switch(key) {
+        case 'value': return '50';
+        case 'format': return '#px';
+      }
+      return sampleValue;
+    }
+
+    directive.show();
+
+    expect($scope.componentId).to.equal("TEST-ID");
+    expect($scope.value).to.equal(50);
+    expect($scope.format).to.equal('#px');
+  });
+
+  it('should save value to attribute data', function() {
+    var directive = $scope.registerDirective.getCall(0).args[0];
+
+    $scope.getAvailableAttributeData = function() {
+      return "50";
+    }
+
+    directive.show();
+
+    $scope.value = 90;
 
     $scope.save();
 
     expect($scope.setAttributeData.calledWith(
-      "TEST-ID", "value", "false"
+      "TEST-ID", "value", "90"
     )).to.be.true;
   });
 
