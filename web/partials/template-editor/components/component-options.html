@@ -1,11 +1,11 @@
 <div class="attribute-editor-component">
   <div class="attribute-editor-row attribute-row-first attribute-row-last">
-    <select id="localization-component-input"
+    <select id="options-component-input"
       class="form-control"
       ng-model="value"
       ng-change="save()"
     >
-      <option ng-repeat="option in languages" value="{{ option }}">
+      <option ng-repeat="option in options" value="{{ option }}">
         {{ option }}
       </option>
     </select>

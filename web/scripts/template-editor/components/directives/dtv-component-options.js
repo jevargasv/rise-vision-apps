@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('risevision.template-editor.directives')
-  .directive('templateComponentLocalization', ['templateEditorFactory',
+  .directive('templateComponentOptions', ['templateEditorFactory',
     function (templateEditorFactory) {
       return {
         restrict: 'E',
         scope: true,
-        templateUrl: 'partials/template-editor/components/component-localization.html',
+        templateUrl: 'partials/template-editor/components/component-options.html',
         link: function ($scope, element) {
           $scope.factory = templateEditorFactory;
 
           function _load() {
             $scope.value = $scope.getAvailableAttributeData($scope.componentId, 'value');
 
-            var languages = $scope.getAvailableAttributeData($scope.componentId, 'languages') || '?';
-            $scope.languages = languages.split(',');
+            var options = $scope.getAvailableAttributeData($scope.componentId, 'options') || '?';
+            $scope.options = options.split(',');
           }
 
           $scope.save = function () {
@@ -22,7 +22,7 @@ angular.module('risevision.template-editor.directives')
           };
 
           $scope.registerDirective({
-            type: 'rise-data-localization',
+            type: 'rise-data-options',
             iconType: 'streamline',
             icon: 'text',
             element: element,
