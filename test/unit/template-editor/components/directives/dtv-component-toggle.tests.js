@@ -18,6 +18,14 @@ describe('directive: templateComponentToggle', function() {
     $provide.service('templateEditorFactory', function() {
       return factory;
     });
+
+    $provide.service('blueprintFactory', function() {
+      return {
+        getComponent: function() {
+          return {};
+        }
+      };
+    });
   }));
 
   beforeEach(inject(function($compile, $rootScope, $templateCache){
