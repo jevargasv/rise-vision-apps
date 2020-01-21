@@ -24,7 +24,7 @@ angular.module('risevision.template-editor.directives')
           $scope.registerDirective({
             type: 'rise-data-options',
             iconType: 'streamline',
-            icon: 'text',
+            icon: 'options',
             element: element,
             show: function () {
               $scope.componentId = $scope.factory.selected.id;

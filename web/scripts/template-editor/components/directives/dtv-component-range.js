@@ -28,7 +28,7 @@ angular.module('risevision.template-editor.directives')
           $scope.registerDirective({
             type: 'rise-data-range',
             iconType: 'streamline',
-            icon: 'text',
+            icon: 'range',
             element: element,
             show: function () {
               $scope.componentId = $scope.factory.selected.id;
