@@ -61,7 +61,7 @@ describe('directive: templateComponentOptions', function() {
 
     expect($scope.componentId).to.equal("TEST-ID");
     expect($scope.value).to.equal('left');
-    expect($scope.options).to.deepEqual(['left', 'right', 'middle']);
+    expect($scope.options).to.deep.equal(['left', 'right', 'middle']);
   });
 
   it('should save value to attribute data', function() {
