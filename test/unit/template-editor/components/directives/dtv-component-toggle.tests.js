@@ -1,6 +1,6 @@
 'use strict';
 
-describe('directive: templateComponentText', function() {
+describe('directive: templateComponentToggle', function() {
   var $scope,
       element,
       factory;
@@ -21,13 +21,13 @@ describe('directive: templateComponentText', function() {
   }));
 
   beforeEach(inject(function($compile, $rootScope, $templateCache){
-    $templateCache.put('partials/template-editor/components/component-text.html', '<p>mock</p>');
+    $templateCache.put('partials/template-editor/components/component-toggle.html', '<p>mock</p>');
     $scope = $rootScope.$new();
 
     $scope.registerDirective = sinon.stub();
     $scope.setAttributeData = sinon.stub();
 
-    element = $compile("<template-component-text></template-component-text>")($scope);
+    element = $compile("<template-component-toggle></template-component-toggle>")($scope);
     $scope = element.scope();
     $scope.$digest();
   }));
@@ -40,15 +40,15 @@ describe('directive: templateComponentText', function() {
 
     var directive = $scope.registerDirective.getCall(0).args[0];
     expect(directive).to.be.ok;
-    expect(directive.type).to.equal('rise-text');
+    expect(directive.type).to.equal('rise-data-toggle');
     expect(directive.iconType).to.equal('streamline');
     expect(directive.icon).to.exist;
     expect(directive.show).to.be.a('function');
   });
 
-  it('should load text from attribute data', function() {
+  it('should load toggle from attribute data', function() {
     var directive = $scope.registerDirective.getCall(0).args[0];
-    var sampleValue = "test text";
+    var sampleValue = "true";
 
     $scope.getAvailableAttributeData = function() {
       return sampleValue;
@@ -62,7 +62,7 @@ describe('directive: templateComponentText', function() {
 
   it('should save text to attribute data', function() {
     var directive = $scope.registerDirective.getCall(0).args[0];
-    var sampleValue = "test text";
+    var sampleValue = "true";
 
     $scope.getAvailableAttributeData = function() {
       return sampleValue;
@@ -70,12 +70,12 @@ describe('directive: templateComponentText', function() {
 
     directive.show();
 
-    $scope.value = "updated text";
+    $scope.value = "false";
 
     $scope.save();
 
     expect($scope.setAttributeData.calledWith(
-      "TEST-ID", "value", "updated text"
+      "TEST-ID", "value", "false"
     )).to.be.true;
   });
 
