@@ -54,7 +54,7 @@ describe('directive: templateComponentRange', function() {
         case 'value': return '50';
         case 'format': return '';
       }
-      return sampleValue;
+      return null;
     }
 
     directive.show();
@@ -72,7 +72,7 @@ describe('directive: templateComponentRange', function() {
         case 'value': return '50';
         case 'format': return '%';
       }
-      return sampleValue;
+      return null;
     }
 
     directive.show();
@@ -90,7 +90,7 @@ describe('directive: templateComponentRange', function() {
         case 'value': return '50';
         case 'format': return '#px';
       }
-      return sampleValue;
+      return null;
     }
 
     directive.show();
