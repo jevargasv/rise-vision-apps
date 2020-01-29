@@ -31,8 +31,7 @@ angular.module('risevision.common.header', [
     'risevision.common.components.search-filter',
     'risevision.common.components.scrolling-list',
     'risevision.common.components.stop-event',
-    'risevision.common.components.analytics',
-    'risevision.common.components.hubspot',
+    'risevision.common.components.logging',
     'risevision.common.components.message-box',
     'risevision.common.components.confirm-modal',
     'risevision.common.components.svg',
@@ -180,11 +179,15 @@ angular.module('risevision.common.header', [
     }
   ])
 
-  .run(['segmentAnalytics', 'SEGMENT_API_KEY', 'analyticsEvents', '$document',
-    function (segmentAnalytics, SEGMENT_API_KEY, analyticsEvents, $document) {
+  .run(['segmentAnalytics', 'SEGMENT_API_KEY', 'analyticsEvents',
+    function (segmentAnalytics, SEGMENT_API_KEY, analyticsEvents) {
       analyticsEvents.initialize();
       segmentAnalytics.load(SEGMENT_API_KEY);
+    }
+  ])
 
+  .run(['$document',
+    function ($document) {
       $document.on('keydown', function (event) {
         var doPrevent = false;
         if (event.keyCode === 8) {
